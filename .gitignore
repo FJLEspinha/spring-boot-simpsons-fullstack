@@ -1,0 +1,23 @@
+# ---------------------------------------------------------------- #
+# 1. BACKEND (Spring Boot / Java / Maven)
+# ---------------------------------------------------------------- #
+/backsimpsons/target/
+/backsimpsons/*.jar
+/backsimpsons/*.war
+/backsimpsons/*.class
+/backsimpsons/logs/
+/backsimpsons/temp/
+
+# ---------------------------------------------------------------- #
+# 2. ARCHIVOS DE IDE Y SISTEMA OPERATIVO
+# ---------------------------------------------------------------- #
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+
+
+# Archivos de Sistema Operativo
+Thumbs.db
+Desktop.ini
