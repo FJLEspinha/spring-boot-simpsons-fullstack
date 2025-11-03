@@ -3,18 +3,18 @@ package com.franjdev.backSimpsons.backsimpsons.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LocationDto {
-    private Integer id;
-    private String name;
+    private final Integer id;
+    private final String name;
     @JsonProperty("image_path")
-    private String imagePath;
-    private String town;
-    private  String use;
+    private final String imagePath;
+    private final String town;
+    private final String use;
 
-    public LocationDto() {
 
-    }
-
-    public LocationDto(Integer id, String name, String imagePath, String town, String use) {
+    public LocationDto(
+            Integer id, String name,
+            String imagePath,
+            String town, String use) {
         this.id = id;
         this.name = name;
         this.imagePath = imagePath;

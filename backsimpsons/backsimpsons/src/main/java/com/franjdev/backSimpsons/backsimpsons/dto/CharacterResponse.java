@@ -1,7 +1,5 @@
 package com.franjdev.backSimpsons.backsimpsons.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -12,11 +10,10 @@ public class CharacterResponse {
     private final Integer pages;
     private final List<CharacterDto> results;
 
-    @JsonCreator
     public CharacterResponse(
-            @JsonProperty("count") Integer count, @JsonProperty("next") String next,
-            @JsonProperty("back") String back, @JsonProperty("pages") Integer pages,
-            @JsonProperty("results") List<CharacterDto> results) {
+            Integer count, String next,
+            String back, Integer pages,
+            List<CharacterDto> results) {
         this.count = count;
         this.next = next;
         this.back = back;

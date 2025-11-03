@@ -1,6 +1,5 @@
 package com.franjdev.backSimpsons.backsimpsons.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CharacterDto {
@@ -13,21 +12,16 @@ public class CharacterDto {
     private final String gender;
     private final String occupation;
     private final String status;
-    //@JsonProperty("portrait_path")
+    @JsonProperty("portrait_path")
     private final String portraitPath;
-/*
-    public  CharacterDto() {
 
-    }
-
- */
 
     public CharacterDto(
-            @JsonProperty("id") Integer id, @JsonProperty("age") Integer age,
-            @JsonProperty("birthdate") String birthdate, @JsonProperty("name") String name,
-            @JsonProperty("description") String description, @JsonProperty("gender") String gender,
-            @JsonProperty("occupation") String occupation, @JsonProperty("status") String status,
-            @JsonProperty("portrait_path") String portraitPath) {
+            Integer id, Integer age,
+            String birthdate, String name,
+            String description, String gender,
+            String occupation, String status,
+            String portraitPath) {
         this.id = id;
         this.age = age;
         this.birthdate = birthdate;
@@ -44,7 +38,7 @@ public class CharacterDto {
     }
 
     public Integer getAge() {
-        return age ;
+        return age;
     }
 
     public String getBirthdate() {
@@ -68,7 +62,7 @@ public class CharacterDto {
     }
 
     public String getDescription() {
-        return  description;
+        return description;
     }
 
     public String getGender() {
