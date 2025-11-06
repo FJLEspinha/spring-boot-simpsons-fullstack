@@ -26,4 +26,9 @@ public class EpisodeControllers {
     public Mono<EpisodeDto> getEpisodeById(@PathVariable Integer id) {
         return episodeServices.getEpisodeById(id);
     }
+
+    @GetMapping("/by-seasson")
+    public Flux<EpisodeDto> getEpisodesBySeason(@RequestParam Integer season) {
+        return episodeServices.getEpisodesBySeason(season);
+    }
 }

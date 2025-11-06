@@ -7,6 +7,9 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class EpisodeServices {
 
@@ -26,6 +29,28 @@ public class EpisodeServices {
     public Mono<EpisodeDto> getEpisodeById(Integer id) {
         return webClient.get().uri("/episodes/"+id).retrieve()
                 .bodyToMono(EpisodeDto.class);
+    }
+
+    public Flux<EpisodeDto> getEpisodesBySeason(Integer seasonNumber) {
+        return retrieveAllPages("/episodes?page=1")
+                .filter(episode -> episode.getSeason().equals(seasonNumber));
+    }
+
+    public Flux<EpisodeDto> retrieveAllPages(String url) {
+        return webClient.get().uri(url).retrieve()
+                .bodyToMono(EpisodeResponse.class)
+                .flatMapMany( response -> {
+                    Flux<EpisodeDto> currentEpisodes = Flux.fromIterable(response.getResults());
+
+                    String nextUrl = response.getNext();
+
+                    if(nextUrl != null) {
+                        Flux<EpisodeDto> nextEpisodes = retrieveAllPages(nextUrl);
+                        return Flux.concat(currentEpisodes,nextEpisodes);
+                    }else {
+                        return currentEpisodes;
+                    }
+                });
     }
 
 }
