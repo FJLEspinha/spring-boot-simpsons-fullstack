@@ -14,6 +14,8 @@ public class CharacterDto {
     private final String status;
     @JsonProperty("portrait_path")
     private final String portraitPath;
+    @JsonProperty("first_appearance_ep")
+    private final FirstAppearanceEpisodeDto firstAppearanceEpisode;
 
 
     public CharacterDto(
@@ -21,7 +23,8 @@ public class CharacterDto {
             String birthdate, String name,
             String description, String gender,
             String occupation, String status,
-            String portraitPath) {
+            String portraitPath,
+            FirstAppearanceEpisodeDto firstAppearanceEpisode) {
         this.id = id;
         this.age = age;
         this.birthdate = birthdate;
@@ -31,6 +34,7 @@ public class CharacterDto {
         this.occupation = occupation;
         this.status = status;
         this.portraitPath = portraitPath;
+        this.firstAppearanceEpisode = firstAppearanceEpisode;
     }
 
     public Integer getId() {
@@ -68,4 +72,10 @@ public class CharacterDto {
     public String getGender() {
         return gender;
     }
+
+    public Integer getFirstAppearanceEpisodeId() {
+        return firstAppearanceEpisode != null ? firstAppearanceEpisode.getId() : null;
+    }
+
+
 }
